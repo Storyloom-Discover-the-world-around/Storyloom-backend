@@ -5,8 +5,11 @@ branch_name=$(git rev-parse --abbrev-ref HEAD)
 
 if [ "$branch_name" = "main" ]; then
   echo "🚫 Pushing directly to the 'main' branch is not allowed."
-  echo "Please switch to another branch (e.g., 'dev' or 'your name' ) and push your changes."
+  echo "Please switch to another branch (e.g., 'dev' or 'your name') and push your changes."
   exit 1
 fi
+
+echo "✅ Push to '$branch_name' was successful!"
+echo "🎉 Awesome work! Keep it up! 🚀"
 
 exit 0
