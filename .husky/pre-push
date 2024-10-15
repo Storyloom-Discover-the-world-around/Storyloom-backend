@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+branch_name=$(git rev-parse --abbrev-ref HEAD)
+
+if [ "$branch_name" = "main" ]; then
+  echo "🚫 Pushing directly to the 'main' branch is not allowed."
+  echo "Please switch to another branch (e.g., 'dev' or 'your name' ) and push your changes."
+  exit 1
+fi
+
+exit 0
