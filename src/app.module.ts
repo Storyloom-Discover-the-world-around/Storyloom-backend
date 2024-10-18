@@ -6,19 +6,20 @@ import { StoryModule } from './story/story.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { PremiumContentController } from './premium-content/premium-content.controller';
 import { PremiumContentModule } from './premium-content/premium-content.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     MongooseModule.forRoot(process.env.MONGODB_URI),
     UserModule,
     StoryModule,
     AuthModule,
     PremiumContentModule,
   ],
-  controllers: [AppController, PremiumContentController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
