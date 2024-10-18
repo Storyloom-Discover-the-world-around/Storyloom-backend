@@ -1,10 +1,15 @@
 import { Controller, Get, UseGuards, Req } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
-import { UserService } from '../user/user.service';
+import { UserService } from 'src/user/user.service';
 
 @Controller('premium')
 export class PremiumContentController {
   constructor(private userService: UserService) {}
+
+  @Get()
+  getStories(): string {
+    return 'Hello User';
+  }
 
   @UseGuards(JwtAuthGuard)
   @Get()
