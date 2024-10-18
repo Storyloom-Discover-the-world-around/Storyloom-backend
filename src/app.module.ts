@@ -22,4 +22,8 @@ import { PremiumContentModule } from './premium-content/premium-content.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {
+    console.log('MONGODB_URI:', process.env.MONGODB_URI);
+  }
+}
