@@ -1,3 +1,6 @@
+Here’s an updated version of your README with a section on Swagger Decorators and Comments:
+
+```markdown
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
@@ -128,6 +131,70 @@ src/
 - **`common/`**: A place for reusable interceptors, filters, decorators, and pipes.
 - **`app.module.ts`**: The main module that imports other feature modules.
 
+## Swagger Decorators and Comments
+
+To document your API using Swagger in Nest.js, you can use the following Swagger decorators. These decorators help define metadata for your API routes, request bodies, responses, and more.
+
+1. **@ApiTags**: This decorator is used to group API routes under a specific tag.
+
+   ```typescript
+   @ApiTags('stories')
+   @Controller('stories')
+   export class StoryController { ... }
+   ```
+
+2. **@ApiOperation**: Describes the purpose of an API route.
+
+   ```typescript
+   @ApiOperation({ summary: 'Create a new story' })
+   @Post()
+   create(@Body() createStoryDto: CreateStoryDto) {
+     ...
+   }
+   ```
+
+3. **@ApiResponse**: Defines the responses for a specific route.
+
+   ```typescript
+   @ApiResponse({ status: 201, description: 'The story has been successfully created.' })
+   @ApiResponse({ status: 400, description: 'Bad Request.' })
+   create(@Body() createStoryDto: CreateStoryDto) {
+     ...
+   }
+   ```
+
+4. **@ApiBody**: Specifies the structure of the request body.
+
+   ```typescript
+   @ApiBody({ type: CreateStoryDto })
+   @Post()
+   create(@Body() createStoryDto: CreateStoryDto) {
+     ...
+   }
+   ```
+
+5. **@ApiParam**: Describes a route parameter.
+
+   ```typescript
+   @ApiParam({ name: 'id', required: true, description: 'Story ID' })
+   @Get(':id')
+   findOne(@Param('id') id: string) {
+     ...
+   }
+   ```
+
+6. **@ApiQuery**: Describes a query parameter.
+
+   ```typescript
+   @ApiQuery({ name: 'limit', required: false, description: 'Number of results to return' })
+   @Get()
+   findAll(@Query('limit') limit?: number) {
+     ...
+   }
+   ```
+
+These decorators can be combined to provide rich, auto-generated API documentation using Swagger for your Nest.js application.
+
 ## Generating Modules, Services, Controllers, and DTOs
 
 To set up new modules, services, controllers, and DTOs, use the following commands:
@@ -151,27 +218,4 @@ $ npm run start
 $ npm run start:dev
 
 # production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-
-
-- Website - [https://nestjs.com](https://nestjs.com/)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
 
