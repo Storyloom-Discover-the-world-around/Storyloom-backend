@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
 import { Role } from 'src/auth/role.enum';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -36,6 +36,21 @@ export class User {
     },
   })
   preferences: Record<string, any>;
+
+  @Prop({ type: [{ type: Types.ObjectId, ref: 'Story' }] })
+  favoriteStories: Types.ObjectId[];
+
+  @Prop({ type: [{ type: Types.ObjectId, ref: 'Story' }] })
+  likedStories: Types.ObjectId[];
+
+  @Prop({ type: [{ type: Types.ObjectId, ref: 'Story' }] })
+  storiesContributed: Types.ObjectId[];
+
+  @Prop({ default: 0 })
+  points: number;
+
+  @Prop({ type: [String], default: [] })
+  badges: string[];
 }
 
 export type UserDocument = User & Document;

@@ -137,6 +137,8 @@ nest g mo NAME
 nest g s NAME
 nest g co NAME
 nest g cl NAME/dto/create-NAME.dto --no-spec
+nest g cl NAME/schema/NAME.schema.ts --no-spec
+
 ```
 
 ## Running the app
