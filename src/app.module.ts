@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PremiumContentModule } from './premium-content/premium-content.module';
+import { SubscriptionModule } from './subscription/subscription.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { PremiumContentModule } from './premium-content/premium-content.module';
     StoryModule,
     AuthModule,
     PremiumContentModule,
+    SubscriptionModule,
   ],
   controllers: [AppController],
   providers: [AppService],
