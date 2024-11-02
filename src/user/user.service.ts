@@ -15,8 +15,14 @@ export class UserService {
   constructor(
     @InjectModel('User') private userModel: Model<UserDocument>,
     private readonly jwtService: JwtService,
-  ) {}
+  ) {
+    this.logJwtSecret(); // Call the method here
+  }
 
+  private logJwtSecret() {
+    const jwtSecret = process.env.JWT_SECRET;
+    console.log(`JWT Secret: ${jwtSecret}`);
+  }
   async createUser(createUserDto: CreateUserDto): Promise<User> {
     const { email, password } = createUserDto;
 
