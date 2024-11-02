@@ -6,10 +6,10 @@ import { UserService } from 'src/user/user.service';
 export class PremiumContentController {
   constructor(private userService: UserService) {}
 
-  @Get()
-  getStories(): string {
-    return 'Hello User';
-  }
+  // @Get()
+  // getStories(): string {
+  //   return 'Hello User';
+  // }
 
   @UseGuards(JwtAuthGuard)
   @Get()

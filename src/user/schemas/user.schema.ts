@@ -12,7 +12,7 @@ export class User {
   email: string;
 
   @Prop({ required: true })
-  password: string;
+  passwordHashed: string;
 
   @Prop({ type: [String], enum: Role, default: [Role.User] })
   roles: Role[];
