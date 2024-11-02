@@ -6,6 +6,7 @@ module.exports = {
       2, // error level (0 = disable, 1 = warning, 2 = error)
       'always', // applies this rule always
       [
+        'resolved', //Resolution of errors or conflicts
         'ci', // Changes to CI configuration files and scripts
         'chore', // Routine tasks or maintenance work
         'docs', // Documentation changes
