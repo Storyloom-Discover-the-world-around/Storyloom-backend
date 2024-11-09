@@ -26,8 +26,4 @@ import { TranslationModule } from './translation/translation.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {
-  constructor() {
-    console.log('MONGODB_URI:', process.env.MONGODB_URI);
-  }
-}
+export class AppModule {}

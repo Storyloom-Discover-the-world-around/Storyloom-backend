@@ -21,7 +21,6 @@ export class UserService {
 
   private logJwtSecret() {
     const jwtSecret = process.env.JWT_SECRET;
-    console.log(`JWT Secret: ${jwtSecret}`);
   }
   async createUser(createUserDto: CreateUserDto): Promise<User> {
     const { email, password } = createUserDto;

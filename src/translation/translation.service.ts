@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { Injectable } from '@nestjs/common';
 import Groq from 'groq-sdk';
 
@@ -15,7 +16,6 @@ export class TranslationService {
     targetLanguage: string,
   ) {
     const demoStory = 'This is going to be a testing story.';
-    console.log('Original Story:', demoStory);
 
     try {
       const response = await this.getGroqChatCompletion(
@@ -26,9 +26,7 @@ export class TranslationService {
       const translatedText =
         response.choices[0]?.message?.content || 'No translation found';
 
-      console.log('Translated Story:', translatedText);
-
-      this.updateTranslationCredits(userId);
+      this.updateTranslationCredits();
 
       return {
         storyId,
@@ -36,7 +34,6 @@ export class TranslationService {
         translatedText,
       };
     } catch (error) {
-      console.error('Translation error:', error);
       throw new Error('Translation failed');
     }
   }
@@ -60,7 +57,5 @@ export class TranslationService {
     }
   }
 
-  private updateTranslationCredits(userId: string) {
-    console.log(`Updating translation credits for user ${userId}`);
-  }
+  private updateTranslationCredits() {}
 }
