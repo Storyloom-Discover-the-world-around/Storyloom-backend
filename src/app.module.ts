@@ -8,6 +8,7 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PremiumContentModule } from './premium-content/premium-content.module';
 import { SubscriptionModule } from './subscription/subscription.module';
+import { TranslationModule } from './translation/translation.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { SubscriptionModule } from './subscription/subscription.module';
     AuthModule,
     PremiumContentModule,
     SubscriptionModule,
+    TranslationModule,
   ],
   controllers: [AppController],
   providers: [AppService],
