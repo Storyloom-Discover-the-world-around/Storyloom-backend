@@ -16,7 +16,7 @@ import { PassportModule } from '@nestjs/passport';
     }),
   ],
   controllers: [UserController],
-  exports: [UserService],
+  exports: [UserService, MongooseModule],
   providers: [UserService],
 })
 export class UserModule {}

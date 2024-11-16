@@ -37,6 +37,9 @@ export class Story {
 
   @Prop({ default: Date.now })
   publishedAt: Date;
+
+  @Prop({ type: Types.ObjectId, ref: 'User', required: true })
+  createdBy: Types.ObjectId;
 }
 
 export type StoryDocument = Story & Document;

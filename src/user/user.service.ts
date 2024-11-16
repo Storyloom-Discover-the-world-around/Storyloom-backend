@@ -68,4 +68,42 @@ export class UserService {
     const expiryDate = new Date(user.subscriptions.expiryDate);
     return expiryDate > new Date();
   }
+
+  async likeStory(userId: string, storyId: string): Promise<User> {
+    const user = await this.userModel.findByIdAndUpdate(
+      userId,
+      { $addToSet: { likedStories: storyId } },
+      { new: true },
+    );
+
+    return user;
+  }
+
+  async removeLikedStory(userId: string, storyId: string): Promise<User> {
+    const user = await this.userModel.findByIdAndUpdate(
+      userId,
+      { $pull: { likedStories: storyId } },
+      { new: true },
+    );
+    return user;
+  }
+
+  async saveStory(userId: string, storyId: string): Promise<User> {
+    const user = await this.userModel.findByIdAndUpdate(
+      userId,
+      { $addToSet: { favoriteStories: storyId } },
+      { new: true },
+    );
+
+    return user;
+  }
+
+  async removeSavedStory(userId: string, storyId: string): Promise<User> {
+    const user = await this.userModel.findByIdAndUpdate(
+      userId,
+      { $pull: { favoriteStories: storyId } },
+      { $new: true },
+    );
+    return user;
+  }
 }
