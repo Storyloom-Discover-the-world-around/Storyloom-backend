@@ -9,13 +9,13 @@ export class Story {
   @Prop({ default: 'Anonymous' })
   author: string;
 
-  @Prop({ required: true })
+  @Prop({ })
   country: string;
 
   @Prop({ required: true })
   genre: string;
 
-  @Prop({ required: true })
+  @Prop({  })
   language: string;
 
   @Prop({
